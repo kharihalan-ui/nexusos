@@ -54,7 +54,6 @@ build_iso() {
         airootfs \
         efiboot \
         grub \
-        isolinux \
         splash \
         "${WORK_DIR}/profile/"
 

@@ -70,12 +70,10 @@ lightdm
 lightdm-gtk-greeter
 lightdm-gtk-greeter-settings
 
-# === macOS THEMING ===
-matcha-gtk-theme
-arc-gtk-theme
-arc-icon-theme
+# === THEMING ===
 papirus-icon-theme
 breeze-gtk
+gtk-engine-murrine
 
 # === FONTS (macOS-like) ===
 ttf-dejavu
@@ -99,7 +97,6 @@ parole
 xarchiver
 htop
 fastfetch
-neofetch
 gnome-disk-utility
 baobab
 

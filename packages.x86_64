@@ -18,7 +18,7 @@ intel-ucode
 
 # === BOOT & FIRMWARE ===
 grub
-grub-bios
+syslinux
 efibootmgr
 os-prober
 mkinitcpio

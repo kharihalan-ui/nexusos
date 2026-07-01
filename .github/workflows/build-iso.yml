@@ -23,6 +23,7 @@ jobs:
             git \
             base-devel \
             grub \
+            syslinux \
             dosfstools \
             squashfs-tools \
             libisoburn \

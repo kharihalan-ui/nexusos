@@ -1,0 +1,36 @@
+// NexusOS Plymouth boot splash
+// macOS-style simplified boot animation
+
+Window.SetBackgroundTopColor (0.10, 0.10, 0.10);
+Window.SetBackgroundBottomColor (0.10, 0.10, 0.10);
+
+fun logo_callback ()
+{
+    my_image = Image ("logo.png");
+    res = Window.GetWidth () / my_image.GetWidth ();
+    my_image = my_image.Scale (my_image.GetWidth () * res, my_image.GetHeight () * res);
+    logo_sprite = Sprite ();
+    logo_sprite.SetImage (my_image);
+    logo_sprite.SetX (Window.GetWidth () / 2 - my_image.GetWidth () / 2);
+    logo_sprite.SetY (Window.GetHeight () / 2 - my_image.GetHeight () / 2 - 60);
+    logo_sprite.SetOpacity (0.9);
+}
+
+fun progress_callback ()
+{
+    my_image = Image ("progress.png");
+    progress_sprite = Sprite ();
+    progress_sprite.SetImage (my_image);
+    progress_sprite.SetX (50);
+    progress_sprite.SetY (Window.GetHeight () - 100);
+    progress_sprite.SetWidth (Window.GetWidth () - 100);
+    progress_sprite.SetHeight (4);
+    progress_sprite.SetOpacity (0.6);
+}
+
+Plymouth.SetDisplayProgressFunction (progress_callback);
+Plymouth.SetDisplayQuitFunction (logo_callback);
+Plymouth.SetDisplayPasswordFunction (progress_callback);
+Plymouth.SetDisplayQuestionFunction (progress_callback);
+
+logo_callback ();

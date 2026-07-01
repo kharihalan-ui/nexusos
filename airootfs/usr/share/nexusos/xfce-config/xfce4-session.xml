@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<channel name="xfce4-session" version="1.0">
+  <property name="general" type="empty">
+    <property name="FailsafeSessionName" type="string" value="Failsafe"/>
+    <property name="SessionName" type="string" value="Default"/>
+    <property name="SaveOnExit" type="bool" value="false"/>
+    <property name="CompositorEnabled" type="bool" value="true"/>
+    <property name="Compositor" type="string" value="xfce"/>
+  </property>
+  <property name="splash" type="empty">
+    <property name="Engine" type="string" value="simple"/>
+  </property>
+  <property name="sessions" type="empty">
+    <property name="failsafe" type="empty">
+      <property name="count" type="int" value="4"/>
+      <property name="client0_command" type="string" value="xfce4-panel"/>
+      <property name="client1_command" type="string" value="xfdesktop"/>
+      <property name="client2_command" type="string" value="xfce4-settings-helper"/>
+      <property name="client3_command" type="string" value="thunar --daemon"/>
+    </property>
+  </property>
+</channel>

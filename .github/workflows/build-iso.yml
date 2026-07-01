@@ -1,0 +1,107 @@
+name: Build NexusOS ISO
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux:latest
+      options: --privileged
+
+    steps:
+      - name: Install dependencies
+        run: |
+          pacman -Syu --noconfirm
+          pacman -S --noconfirm \
+            archiso \
+            git \
+            base-devel \
+            dosfstools \
+            squashfs-tools \
+            erofs-utils \
+            libisoburn \
+            mtools \
+            sudo
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup build environment
+        run: |
+          # Create build user (archiso needs non-root)
+          useradd -m builder
+          echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+          chown -R builder:builder $GITHUB_WORKSPACE
+
+      - name: Build ISO
+        run: |
+          sudo -u builder bash build.sh all
+        working-directory: ${{ github.workspace }}
+
+      - name: Upload ISO artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nexusos-iso
+          path: out/nexusos-*.iso
+          compression-level: 0
+          retention-days: 30
+
+      - name: Upload checksum
+        uses: actions/upload-artifact@v4
+        with:
+          name: nexusos-checksum
+          path: out/nexusos-iso.sha256
+          retention-days: 30
+
+  release:
+    needs: build
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Download ISO
+        uses: actions/download-artifact@v4
+        with:
+          name: nexusos-iso
+
+      - name: Download checksum
+        uses: actions/download-artifact@v4
+        with:
+          name: nexusos-checksum
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: NexusOS ${{ github.run_number }}
+          tag_name: v${{ github.run_number }}
+          body: |
+            ## NexusOS ISO Build
+            
+            **System requirements:**
+            - RAM: 512 MB minimum / 2 GB recommended
+            - Storage: 4 GB minimum (USB) / 8 GB+ recommended
+            
+            **Features:**
+            - macOS-inspired XFCE desktop
+            - Windows .exe compatibility (Wine pre-installed)
+            - USB persistence support
+            - Optimized for low RAM (ZRAM, zswap)
+            
+            **To create bootable USB:**
+            - Linux: `sudo dd if=nexusos-*.iso of=/dev/sdX bs=4M status=progress`
+            - Windows: Use Rufus or BalenaEtcher
+            
+            **SHA256:** See checksum file
+          files: |
+            nexusos-*.iso
+            nexusos-iso.sha256
+          draft: false
+          prerelease: true

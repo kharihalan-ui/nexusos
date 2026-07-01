@@ -32,16 +32,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup build environment
-        run: |
-          # Create build user (archiso needs non-root)
-          useradd -m builder
-          echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-          chown -R builder:builder $GITHUB_WORKSPACE
-
       - name: Build ISO
         run: |
-          sudo -u builder bash build.sh all
+          bash build.sh all
         working-directory: ${{ github.workspace }}
 
       - name: Upload ISO artifact

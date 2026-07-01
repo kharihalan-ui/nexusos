@@ -161,10 +161,10 @@ cp -r /usr/share/nexusos/panel-config/* /etc/skel/.config/xfce4/panel/ 2>/dev/nu
 # --- GTK settings (macOS theme) ---
 cat > /etc/skel/.config/gtk-3.0/settings.ini << 'EOF'
 [Settings]
-gtk-theme-name=WhiteSur
-gtk-icon-theme-name=WhiteSur
+gtk-theme-name=Matcha-sea
+gtk-icon-theme-name=Papirus-Dark
 gtk-font-name=Cantarell 10
-gtk-cursor-theme-name=WhiteSur
+gtk-cursor-theme-name=Adwaita
 gtk-cursor-theme-size=24
 gtk-toolbar-style=GTK_TOOLBAR_BOTH_HORIZ
 gtk-toolbar-icon-size=GTK_ICON_SIZE_SMALL_TOOLBAR
@@ -181,20 +181,20 @@ EOF
 
 cat > /etc/skel/.config/gtk-4.0/settings.ini << 'EOF'
 [Settings]
-gtk-theme-name=WhiteSur
-gtk-icon-theme-name=WhiteSur
+gtk-theme-name=Matcha-sea
+gtk-icon-theme-name=Papirus-Dark
 gtk-font-name=Cantarell 10
-gtk-cursor-theme-name=WhiteSur
+gtk-cursor-theme-name=Adwaita
 EOF
 
 # --- GTK3 system-wide theme ---
 mkdir -p /etc/gtk-3.0
 cat > /etc/gtk-3.0/settings.ini << 'EOF'
 [Settings]
-gtk-theme-name=WhiteSur
-gtk-icon-theme-name=WhiteSur
+gtk-theme-name=Matcha-sea
+gtk-icon-theme-name=Papirus-Dark
 gtk-font-name=Cantarell 10
-gtk-cursor-theme-name=WhiteSur
+gtk-cursor-theme-name=Adwaita
 EOF
 
 # --- Plank dock (macOS-style) configuration ---
@@ -332,9 +332,9 @@ EOF
 cat > /etc/lightdm/lightdm-gtk-greeter.conf << 'EOF'
 [greeter]
 background=/usr/share/backgrounds/nexusos/nexusos-login.png
-theme-name=WhiteSur
-icon-theme-name=WhiteSur
-cursor-theme-name=WhiteSur
+theme-name=Matcha-sea
+icon-theme-name=Papirus-Dark
+cursor-theme-name=Adwaita
 font-name=Cantarell 10
 xft-antialias=true
 xft-hintstyle=hintfull

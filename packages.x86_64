@@ -71,9 +71,11 @@ lightdm-gtk-greeter
 lightdm-gtk-greeter-settings
 
 # === macOS THEMING ===
-# WhiteSur GTK theme and icons for macOS look
-whitesur-gtk-theme
-whitesur-icon-theme
+matcha-gtk-theme
+arc-gtk-theme
+arc-icon-theme
+papirus-icon-theme
+breeze-gtk
 
 # === FONTS (macOS-like) ===
 ttf-dejavu
@@ -99,7 +101,6 @@ htop
 fastfetch
 neofetch
 gnome-disk-utility
-gparted
 baobab
 
 # === WINDOWS COMPATIBILITY ===
@@ -152,7 +153,4 @@ acpi
 acpid
 xfce4-power-manager
 
-# === LIGHTDM MACOS-LIKE GREETER ===
-# We use lightdm-gtk-greeter with custom theme
-lightdm
-lightdm-gtk-greeter
+

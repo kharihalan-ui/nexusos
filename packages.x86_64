@@ -50,14 +50,28 @@ wireplumber
 pavucontrol
 
 # === XFCE4 DESKTOP (lightweight - ~250MB RAM idle) ===
-xfce4
-xfce4-goodies
+exo
+garcon
+thunar
+thunar-volman
+thunar-archive-plugin
+tumbler
+xfce4-appfinder
+xfce4-panel
+xfce4-power-manager
+xfce4-session
+xfce4-settings
+xfce4-terminal
 xfce4-whiskermenu-plugin
 xfce4-screenshooter
 xfce4-pulseaudio-plugin
-thunar
-thunar-archive-plugin
-thunar-volman
+xfce4-notifyd
+xfce4-taskmanager
+xfce4-clipman-plugin
+xfce4-battery-plugin
+xfconf
+xfdesktop
+xfwm4
 gvfs
 gvfs-smb
 gvfs-mtp
@@ -73,7 +87,6 @@ lightdm-gtk-greeter-settings
 # === THEMING ===
 papirus-icon-theme
 breeze-gtk
-gtk-engine-murrine
 
 # === FONTS (macOS-like) ===
 ttf-dejavu

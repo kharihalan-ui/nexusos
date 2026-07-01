@@ -18,9 +18,9 @@ intel-ucode
 
 # === BOOT & FIRMWARE ===
 grub
+grub-bios
 efibootmgr
 os-prober
-syslinux
 mkinitcpio
 
 # === NETWORKING ===

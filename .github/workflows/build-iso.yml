@@ -22,9 +22,9 @@ jobs:
             archiso \
             git \
             base-devel \
+            grub \
             dosfstools \
             squashfs-tools \
-            erofs-utils \
             libisoburn \
             mtools \
             sudo

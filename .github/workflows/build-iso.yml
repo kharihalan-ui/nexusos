@@ -15,12 +15,6 @@ jobs:
       options: --privileged
 
     steps:
-      - name: Fix mirrorlist
-        run: |
-          # Generate fresh mirrorlist for reliable downloads
-          pacman -S --noconfirm reflector
-          reflector --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
-
       - name: Install dependencies
         run: |
           pacman -Syu --noconfirm
